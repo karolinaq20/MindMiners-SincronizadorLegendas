@@ -5,12 +5,20 @@
     <RootNamespace>MindMiners_MiniProjeto</RootNamespace>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile>C:\MindMiners\MindMiners-SincronizadorLegendas\MindMiners-MiniProjeto\MindMiners-MiniProjeto\MindMiners-MiniProjeto.xml</DocumentationFile>
+  </PropertyGroup>
+
   <ItemGroup>
     <ProjectReference Include="..\MiniProjeto-Library\MiniProjeto-Library.csproj" />
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="Output\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.2" />
   </ItemGroup>
 
 

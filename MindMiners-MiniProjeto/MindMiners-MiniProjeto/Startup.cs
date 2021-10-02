@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.OpenApi.Models;
 
 namespace MindMiners_MiniProjeto
 {
@@ -19,6 +20,10 @@ namespace MindMiners_MiniProjeto
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+            services.AddSwaggerGen(c =>
+                {
+                    c.SwaggerDoc(name: "v1", new OpenApiInfo { Title = "Sincronizador de Arquivos", Version = "v1" });
+                });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -28,6 +33,8 @@ namespace MindMiners_MiniProjeto
             {
                 app.UseDeveloperExceptionPage();
             }
+            app.UseSwagger();
+            app.UseSwaggerUI(c => { c.SwaggerEndpoint(url: "/swagger/v1/swagger.json", name: "MindMiners-MiniProjeto"); });
 
             app.UseHttpsRedirection();
 

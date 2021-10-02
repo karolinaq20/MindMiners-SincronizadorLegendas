@@ -6,15 +6,23 @@ using System.Text;
 
 namespace MiniProjeto_Library.Service
 {
-    public class SincronizadorService: ISincronizador
+    public class SincronizadorService : ISincronizador
     {
         //Método para sincronizar
         public string SincronizadorArquivo(IFormFile arquivo, int tempo)
         {
-            string arquivoAjustado = Path.Combine(Environment.CurrentDirectory, "Output", $"Sincronizado_{DateTime.Now.Ticks}_{arquivo.FileName}");
-
             try
             {
+                if (!arquivo.FileName.EndsWith(".srt"))
+                    throw new Exception("Arquivo deve possuir extensão .srt");
+
+                string diretorioSaida = Path.Combine(Environment.CurrentDirectory, "Output");
+
+                if (!Directory.Exists(diretorioSaida))
+                    Directory.CreateDirectory(diretorioSaida);
+
+                string arquivoAjustado = Path.Combine(diretorioSaida, $"Sincronizado_{arquivo.FileName.Replace(".srt", "", StringComparison.InvariantCultureIgnoreCase)}_{DateTime.Now.Ticks}.srt");
+
                 using (StreamReader leitor = new StreamReader(arquivo.OpenReadStream(), Encoding.Default))
                 {
                     string linha;
