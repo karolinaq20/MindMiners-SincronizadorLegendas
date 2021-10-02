@@ -16,6 +16,7 @@ namespace MindMiners_Test
             var sincronizadorController = new SincronizadorController();
             var arquivoMock = new Mock<IFormFile>();
 
+            // Cria arquivo para teste
             var memoria = new MemoryStream();
             var saida = new StreamWriter(memoria);
             saida.Write("1\r\n00:01:06,608 --> 00:01:07,609\r\nOi, Nat!\r\n\r\n2\r\n00:01:37,055 --> 00:01:38,682\r\nNós duas estamos\r\nde cabeça para baixo.");

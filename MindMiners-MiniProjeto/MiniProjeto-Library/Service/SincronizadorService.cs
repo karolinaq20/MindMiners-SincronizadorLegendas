@@ -13,20 +13,25 @@ namespace MiniProjeto_Library.Service
         {
             try
             {
+                // Valida se o arquivo tem a extensão esperada
                 if (!arquivo.FileName.EndsWith(".srt"))
                     throw new Exception("Arquivo deve possuir extensão .srt");
 
                 string diretorioSaida = Path.Combine(Environment.CurrentDirectory, "Output");
 
+                // Caso o diretório de saída não exista, faz a criação
                 if (!Directory.Exists(diretorioSaida))
                     Directory.CreateDirectory(diretorioSaida);
 
+                // Elabora nome do arquivo
                 string arquivoAjustado = Path.Combine(diretorioSaida, $"Sincronizado_{arquivo.FileName.Replace(".srt", "", StringComparison.InvariantCultureIgnoreCase)}_{DateTime.Now.Ticks}.srt");
 
+                // Inicia leitura de arquivo enviado por parâmetro
                 using (StreamReader leitor = new StreamReader(arquivo.OpenReadStream(), Encoding.Default))
                 {
                     string linha;
 
+                    // Inicia escrita de novo arquivo com sincronização
                     using (StreamWriter saida =
                        new StreamWriter(arquivoAjustado, false, Encoding.Default))
                     {
