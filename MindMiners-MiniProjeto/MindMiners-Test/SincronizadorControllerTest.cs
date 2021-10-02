@@ -1,9 +1,7 @@
 using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
 using MindMiners_MiniProjeto.Controllers;
 using MiniProjeto_Library.Model;
 using Moq;
-using System;
 using System.IO;
 using Xunit;
 
