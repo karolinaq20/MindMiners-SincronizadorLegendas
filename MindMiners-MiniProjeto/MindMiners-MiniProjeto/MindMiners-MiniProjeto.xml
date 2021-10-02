@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>MindMiners-MiniProjeto</name>
+    </assembly>
+    <members>
+        <member name="M:MindMiners_MiniProjeto.Controllers.SincronizadorController.Post(MiniProjeto_Library.Model.SincronizadorModel)">
+            <Summary>
+             Sincronizador de Arquivos .srt
+            </Summary>
+        </member>
+    </members>
+</doc>
